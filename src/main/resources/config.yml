@@ -1,0 +1,13 @@
+# MeteorShowers Plugin config.yml
+# For ease of use this config has been sorted in Alphabetical Order
+
+# enabled-worlds: List of worlds that Meteorites can fall in
+enabled-worlds:
+  - "world"
+  - "world_the_end"
+
+# meteorite-player-chance: The chance of a meteorite spawning above a player (As a percentage, can be above 100)
+meteorite-player-chance: 100
+
+# spawn-height: The Y height to spawn Meteorites at (Maximum Y height 320)
+spawn-height: 128

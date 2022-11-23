@@ -1,0 +1,6 @@
+name: MeteorShower
+version: '${project.version}'
+main: me.dave.meteorshower.MeteorShower
+api-version: 1.19
+authors: [ Dav_e_ ]
+description: Summon Meteor Showers to spawn in loot, demolish buildings or give your players a challenging time
