@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MeteoriteShowersCmd implements CommandExecutor, TabCompleter {
+    private final ShowerSummoner showerSummoner = new ShowerSummoner();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String args[]) {
@@ -21,7 +22,16 @@ public class MeteoriteShowersCmd implements CommandExecutor, TabCompleter {
                     return true;
                 }
                 MeteoriteShowers.configManager.reloadConfig();
-                sender.sendMessage(ChatColor.GREEN + "GardeningTweaks has been reloaded.");
+                PluginDescriptionFile pdf = MeteoriteShowers.getInstance().getDescription();
+                sender.sendMessage(ChatColor.GREEN + pdf.getName() + " has been reloaded.");
+                return true;
+            }
+            if (args[0].equalsIgnoreCase("shoot")) {
+                if (!sender.hasPermission("meteoriteshowers.admin.shoot")) {
+                    sender.sendMessage("§cYou have insufficient permissions.");
+                    return true;
+                }
+                showerSummoner.summonPlayerMeteorites(0, 0);
                 return true;
             }
         }
@@ -38,7 +48,8 @@ public class MeteoriteShowersCmd implements CommandExecutor, TabCompleter {
         boolean wordCompletionSuccess = false;
 
         if (args.length == 1) {
-            if (commandSender.hasPermission("meteoriteshowers.admin.summon")) tabComplete.add("summon");
+            if (commandSender.hasPermission("meteoriteshowers.admin.reload")) tabComplete.add("reload");
+            if (commandSender.hasPermission("meteoriteshowers.admin.shoot")) tabComplete.add("shoot");
         }
 
         for (String currTab : tabComplete) {

@@ -1,6 +1,10 @@
 # MeteoriteShowers Plugin config.yml
 # For ease of use this config has been sorted in Alphabetical Order
 
+drop-items:
+  - "iron_ingot"
+  - "kelp"
+
 # enabled-worlds: List of worlds that Meteorites can fall in
 enabled-worlds:
   - "world"
