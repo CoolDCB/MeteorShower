@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 
-public class ShowerSummoner {
+public class MeteoriteSummoner {
     private final MeteoriteShowers plugin = MeteoriteShowers.getInstance();
     private final NamespacedKey meteoriteKey = new NamespacedKey(plugin, "MeteoriteShowers");
 
@@ -37,14 +37,14 @@ public class ShowerSummoner {
         summonShower(locationList, duration, count);
     }
 
-    private void summonLocationMeteorites(Location location, int duration, int count) {
+    public void summonLocationMeteorites(Location location, int duration, int count) {
         List<Location> locationList = new ArrayList<>();
         locationList.add(location);
 
         summonShower(locationList, duration, count);
     }
 
-    private void summonRangeMeteorites(Location corner1, Location corner2, int duration, int count) {
+    public void summonRangeMeteorites(Location corner1, Location corner2, int duration, int count) {
         List<Location> locationList = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -60,6 +60,9 @@ public class ShowerSummoner {
     private void summonShower(List<Location> locationList, int duration, int count) {
         // Period in ticks between meteorites spawning
         int period = 10;
+        if (duration <= 0) duration = period;
+        if (count < 0) count = 0;
+
         // Number of spawn periods
         double periodCount = (double) duration / period;
         if (periodCount < 1) periodCount = 1;
@@ -72,19 +75,22 @@ public class ShowerSummoner {
         }
 
         final int[] durationRemaining = {duration};
+        final int[] currLocationIndex = {0};
         int finalPeriod = period;
         double finalCountPerPeriod = countPerPeriod;
 
         new BukkitRunnable() {
             @Override
             public void run() {
+                durationRemaining[0] -= finalPeriod;
                 if (durationRemaining[0] < 0) {
                     cancel();
                     return;
                 }
-                durationRemaining[0] -= finalPeriod;
+
                 for (int i = 0; i < Math.ceil(finalCountPerPeriod); i++) {
-                    Location spawnLoc = locationList.get((i % locationList.size()));
+                    Location spawnLoc = locationList.get((currLocationIndex[0] % locationList.size()));
+                    currLocationIndex[0]++;
                     spawnLoc.setY(MeteoriteShowers.configManager.getSpawnHeight());
                     World world = spawnLoc.getWorld();
                     if (world == null) continue;
