@@ -23,8 +23,10 @@ public class FallingBlockEvents implements Listener {
         World world = entity.getWorld();
         Location location = entity.getLocation();
 
-        world.dropItemNaturally(location, new ItemStack(Material.KELP));
-        world.dropItemNaturally(location, new ItemStack(Material.IRON_INGOT, 4));
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            world.dropItemNaturally(location, new ItemStack(Material.KELP));
+            world.dropItemNaturally(location, new ItemStack(Material.IRON_INGOT, 4));
+        }, 1);
 
         world.playSound(location.clone().add(0.5, 0.5, 0.5), Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 1f, 1f);
         world.spawnParticle(Particle.EXPLOSION_HUGE, location.clone().add(0.5, 0.5, 0.5), 50);
