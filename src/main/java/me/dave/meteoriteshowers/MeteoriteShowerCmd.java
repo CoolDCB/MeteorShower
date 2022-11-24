@@ -23,7 +23,7 @@ public class MeteoriteShowerCmd implements CommandExecutor, TabCompleter {
         boolean wordCompletionSuccess = false;
 
         if (args.length == 1) {
-            if (commandSender.hasPermission("meteorshower.admin.summon")) tabComplete.add("summon");
+            if (commandSender.hasPermission("meteoriteshowers.admin.summon")) tabComplete.add("summon");
         }
 
         for (String currTab : tabComplete) {
