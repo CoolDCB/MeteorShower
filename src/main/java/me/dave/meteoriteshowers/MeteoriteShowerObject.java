@@ -1,27 +1,26 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;
 
-public class MeteorShowerObject {
-    private final MeteorShower plugin = MeteorShower.getInstance();
+public class MeteoriteShowerObject {
+    private final MeteoriteShowers plugin = MeteoriteShowers.getInstance();
+    private final NamespacedKey meteoriteKey = new NamespacedKey(plugin, "MeteoriteShowers");
     private final HashSet<UUID> entityList = new HashSet<>();
 
-    public MeteorShowerObject(LocationData locationData) {
-        new MeteorShowerObject(locationData, 0, 0);
+    public MeteoriteShowerObject(LocationData locationData) {
+        new MeteoriteShowerObject(locationData, 0, 0);
     }
 
-    public MeteorShowerObject(LocationData locationData, int duration) {
-        new MeteorShowerObject(locationData, duration, 0);
+    public MeteoriteShowerObject(LocationData locationData, int duration) {
+        new MeteoriteShowerObject(locationData, duration, 0);
     }
 
-    public MeteorShowerObject(LocationData locationData, int duration, int count) {
+    public MeteoriteShowerObject(LocationData locationData, int duration, int count) {
         // Period in ticks between meteorites spawning
         int period = 10;
         // Number of meteors to send per period
@@ -44,7 +43,7 @@ public class MeteorShowerObject {
     // Summons Meteorites above all online players
     private void summonPlayerMeteorites(int duration, int count) {
         List<UUID> playerList = new ArrayList<>();
-        List<World> defaultWorlds = MeteorShower.configManager.getEnabledWorlds();
+        List<World> defaultWorlds = MeteoriteShowers.configManager.getEnabledWorlds();
         Bukkit.getOnlinePlayers().forEach((player) -> { if (defaultWorlds.contains(player.getWorld())) playerList.add(player.getUniqueId()); });
 
         summonPlayerMeteorites(playerList, duration, count);
@@ -72,9 +71,9 @@ public class MeteorShowerObject {
             for (int i = 0; i < Math.ceil(finalCountPerPeriod); i++) {
                 Player player = Bukkit.getPlayer(playerList.get((i % playerList.size())));
                 Location spawnLoc = player.getLocation().clone();
-                spawnLoc.setY(MeteorShower.configManager.getSpawnHeight());
+                spawnLoc.setY(MeteoriteShowers.configManager.getSpawnHeight());
                 FallingBlock meteorite = player.getWorld().spawnFallingBlock(spawnLoc, Material.MAGMA_BLOCK.createBlockData());
-                //  set persistent data
+                meteorite.getPersistentDataContainer().set(meteoriteKey, PersistentDataType.INTEGER, 0);
             }
         }, 0, period);
     }

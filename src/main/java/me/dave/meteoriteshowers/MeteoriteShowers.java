@@ -1,9 +1,9 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class MeteorShower extends JavaPlugin {
-    private static MeteorShower plugin;
+public final class MeteoriteShowers extends JavaPlugin {
+    private static MeteoriteShowers plugin;
     public static ConfigManager configManager;
 
     @Override
@@ -17,7 +17,7 @@ public final class MeteorShower extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public static MeteorShower getInstance() {
+    public static MeteoriteShowers getInstance() {
         return plugin;
     }
 }

@@ -1,4 +1,4 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
 public enum LocationType {
     PLAYERS,

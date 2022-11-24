@@ -1,4 +1,4 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -24,7 +24,7 @@ public class LocationData {
         HashSet<UUID> playerList = new HashSet<>();
         Bukkit.getOnlinePlayers().forEach((player) -> playerList.add(player.getUniqueId()));
         this.playerList = playerList;
-        this.worlds = MeteorShower.configManager.getEnabledWorlds();
+        this.worlds = MeteoriteShowers.configManager.getEnabledWorlds();
         this.corner1 = null;
         this.corner2 = null;
     }
@@ -35,7 +35,7 @@ public class LocationData {
     public LocationData(HashSet<UUID> playerList) {
         this.locationType = LocationType.PLAYERS;
         this.playerList = playerList;
-        this.worlds = MeteorShower.configManager.getEnabledWorlds();
+        this.worlds = MeteoriteShowers.configManager.getEnabledWorlds();
         this.corner1 = null;
         this.corner2 = null;
     }

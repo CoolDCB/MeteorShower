@@ -1,4 +1,4 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,7 +8,7 @@ import org.bukkit.command.TabCompleter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MeteorShowerCmd implements CommandExecutor, TabCompleter {
+public class MeteoriteShowerCmd implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {

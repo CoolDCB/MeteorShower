@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.dave</groupId>
-    <artifactId>MeteorShower</artifactId>
+    <artifactId>MeteoriteShowers</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>MeteorShower</name>
-    <description>Summon Meteor Showers to spawn in loot, demolish buildings or give your players a challenging time</description>
+    <name>MeteoriteShowers</name>
+    <description>Summon Meteorite Showers to spawn in loot, demolish buildings or give your players a challenging time</description>
 
     <properties>
         <java.version>17</java.version>

@@ -1,4 +1,4 @@
-package me.dave.meteorshower;
+package me.dave.meteoriteshowers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigManager {
-    private final MeteorShower plugin = MeteorShower.getInstance();
+    private final MeteoriteShowers plugin = MeteoriteShowers.getInstance();
     private final List<World> enabledWorlds = new ArrayList<>();
     private double meteoritePlayerChance;
     private int spawnHeight;
