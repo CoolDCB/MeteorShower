@@ -10,6 +10,8 @@ public final class MeteoriteShowers extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         configManager = new ConfigManager();
+
+        getCommand("meteoriteshowers").setExecutor(new MeteoriteShowersCmd());
     }
 
     @Override

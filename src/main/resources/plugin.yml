@@ -4,3 +4,8 @@ main: me.dave.meteoriteshowers.MeteoriteShowers
 api-version: 1.19
 authors: [ Dav_e_ ]
 description: Summon Meteorite Showers to spawn in loot, demolish buildings or give your players a challenging time
+commands:
+  meteoriteshowers:
+    description: The main MeteoriteShowers Command.
+    aliases: ms
+    usage: /meteoriteshowers

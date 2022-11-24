@@ -7,38 +7,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;
 
-public class MeteoriteShowerObject {
+public class ShowerSummoner {
     private final MeteoriteShowers plugin = MeteoriteShowers.getInstance();
     private final NamespacedKey meteoriteKey = new NamespacedKey(plugin, "MeteoriteShowers");
-    private final HashSet<UUID> entityList = new HashSet<>();
-
-    public MeteoriteShowerObject(LocationData locationData) {
-        new MeteoriteShowerObject(locationData, 0, 0);
-    }
-
-    public MeteoriteShowerObject(LocationData locationData, int duration) {
-        new MeteoriteShowerObject(locationData, duration, 0);
-    }
-
-    public MeteoriteShowerObject(LocationData locationData, int duration, int count) {
-        // Period in ticks between meteorites spawning
-        int period = 10;
-        // Number of meteors to send per period
-        double countPerPeriod = count / ((double) duration / period);
-        if (countPerPeriod < 1) {
-            countPerPeriod = 1;
-            period = duration / count;
-        }
-
-        double finalCountPerPeriod = countPerPeriod;
-        LocationType locType = locationData.getLocationType();
-        List<Location> locationList = new ArrayList<>();
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            for (int i = 0; i < Math.ceil(finalCountPerPeriod); i++) {
-
-            }
-        }, 0, period);
-    }
 
     // Summons Meteorites above all online players
     private void summonPlayerMeteorites(int duration, int count) {
